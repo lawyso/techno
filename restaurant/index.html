@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Untitled</title>
+
+    <link
+      rel="stylesheet"
+      href="http://kendo.cdn.telerik.com/2016.3.914/styles/kendo.common.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="http://kendo.cdn.telerik.com/2016.3.914/styles/kendo.rtl.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="http://kendo.cdn.telerik.com/2016.3.914/styles/kendo.default.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="http://kendo.cdn.telerik.com/2016.3.914/styles/kendo.mobile.all.min.css"
+    />
+
+    <script src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2016.3.914/js/angular.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2016.3.914/js/jszip.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2016.3.914/js/kendo.all.min.js"></script>
+    <script>
+      $(function() {
+        $("#treeview").kendoTreeView({
+          dataSource: {
+            data: [
+              {
+                id: 7,
+                parent_id: 0,
+                text: "Salad",
+                value: "Salad",
+                expanded: true,
+                items: [
+                  { id: 71, parent_id: 7, text: "Santa Fe", value: "Santa Fe" },
+                  { id: 72, parent_id: 7, text: "Greek", value: "Greek" },
+                  { id: 73, parent_id: 7, text: "Asian", value: "Asian" }
+                ]
+              },
+              {
+                id: 8,
+                parent_id: 0,
+                text: "Entree",
+                value: "Entree",
+                expanded: true,
+                items: [
+                  { id: 71, parent_id: 8, text: "Steak", value: "Steak" },
+                  { id: 72, parent_id: 8, text: "Salmon", value: "Salmon" },
+                  { id: 73, parent_id: 8, text: "Rice", value: "Rice" }
+                ]
+              },
+              {
+                id: 9,
+                parent_id: 0,
+                text: "Soup",
+                value: "Soup",
+                expanded: true,
+                items: [
+                  {
+                    id: 71,
+                    parent_id: 9,
+                    text: "Minestrone",
+                    value: "Santa FeMinestrone"
+                  },
+                  {
+                    id: 72,
+                    parent_id: 9,
+                    text: "Hot and Sour",
+                    value: "Hot and Sour"
+                  },
+                  { id: 73, parent_id: 9, text: "Miso", value: "Miso" }
+                ]
+              }
+            ]
+          },
+          checkboxes: true
+        });
+
+        var values = ["Santa Fe", "Asian"];
+
+        var setTreeViewValues = function(values) {
+          var tv = $("#treeview").data("kendoTreeView");
+
+          tv.dataItems().forEach(function(dataItem) {
+            if (values.indexOf(dataItem.text) > -1) {
+              dataItem.set("checked", true);
+            }
+          });
+        };
+
+        setTreeViewValues(values);
+      });
+    </script>
+  </head>
+  <body>
+    <h3>RESTAURANT MENU</h3>
+    <div id="treeview"></div>
+  </body>
+</html>
