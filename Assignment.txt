@@ -1,0 +1,18 @@
+1. QUESTION 1
+
+SELECT
+    CarModel,
+    CarMaker,
+    SUM(TotalSalesPrice) AS totalSales
+FROM db.CarSales
+WHERE
+    SaleDate >= DATEADD(day, -30, GETDATE())
+GROUP BY
+    CarModel,
+    CarMaker;
+
+2. QUESTION 2(b)
+
+Time Complexity:O(n)
+
+Space Complexity: O(n)
